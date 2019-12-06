@@ -28,7 +28,7 @@ bool MovieBST::insert(string value) {
 
 	comma = value.rfind(",");
 	mName = value.substr(0,comma);
-	mName.erase(std::remove(mName.begin(), mName.end(), '"'), mName.end());
+	mName.erase(remove(mName.begin(), mName.end(), '"'), mName.end());
 	mRating = stod(value.substr(comma+1));
 
     if (!root) {

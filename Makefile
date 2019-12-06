@@ -21,3 +21,6 @@ movies.o: movies.cpp
 
 utility.o: utility.cpp
 	g++ -c $(CXX_FLAG) utility.cpp
+
+clean:
+	rm -f *.o
