@@ -13,6 +13,9 @@ public:
 	~MovieBST();
 	bool insert(string value);
 	void printPreOrder() const;
+	//void timeSearch(int w) const;
+	bool contains (string s) const;
+	int depth (string s) const;
 	//void printBest() const;
 	//void findBestWithPrefix(string prefix) const;
 
@@ -30,6 +33,8 @@ private:
 	void clear(Node* n);
 	bool insert(const string& mName, const double& mRating, Node *n, int mDepth);
 	void printPreOrder(Node *n) const;
+	bool contains(string s, Node* N) const;
+	int depth (string s, Node* n) const;
 	//Node* findBest(Node* n) const;
 
 };

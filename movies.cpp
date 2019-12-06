@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <ctime>
 #include "movies.h"
 #include "utility.h"
 
@@ -77,6 +78,39 @@ void MovieBST::printPreOrder(Node *n) const {
     }
 }
 
+
+
+bool MovieBST::contains(string s) const{
+	return contains(s, root);
+}
+
+bool MovieBST::contains(string s, Node* n) const{
+	if(n){
+		if(n->name == s)
+			return true;
+		if(s < n->name)
+			return contains(s, n->left);
+		if(s > n->name)
+			return contains(s, n->right);
+	}	
+	return false;
+}
+
+int MovieBST::depth (string s) const{
+	return depth(s, root);
+}
+
+int MovieBST::depth (string s, Node* n) const{
+	if(n){
+		if(n->name == s)
+			return n->depth;
+		if(s < n->name)
+			return depth(s, n->left);
+		if(s > n->name)
+			return depth(s, n->right);
+	}	
+	return 0;
+}
 /*void MovieBST::printBestWithPrefix(string prefix) const{
 
 	findBestWithPrefix(Node* root);

@@ -49,20 +49,58 @@ int main(int argc, char** argv){
     // Use std::string movieName and double movieRating
     // to construct your Movie objects
     bst.insert(line);
-    if (movieName.substr(0, prefix.size()) == prefix){
+    if (movieName.substr(0, prefix.size()) == prefix && strcmp(argv[1], "true") == 0){
       pbst.insert(movieName, movieRating);
     }
     //cout << movieName << " has rating " << movieRating << endl;
   }
   movieFile.close();
 
-  //if(argv[1] == "true"){
+  if(strcmp(argv[1], "true") == 0){
     bst.printPreOrder();
     cout << endl;
     pbst.printBest(prefix);
-  //}
+  }
 
+  if(strcmp(argv[1], "false") == 0){
+    double w = stoi(argv[3]);
+    clock_t start;
+    start = clock();
+    for(int i = 0; i < w; i++){
+      getline (movieFile, line);
+      parseLine(line, movieName, movieRating);
+      bst.contains(movieName);
+    }
+    cout << "Average time to search: " << ((clock() - start) * 1000.0) / w << " microseconds" << endl;
 
+    MovieBST test;
+
+    ifstream movieFile (argv[2]);
+    string line, movieName;
+    double movieRating;
+
+    ofstream visited, nodes;
+    visited.open("visited.txt");
+    nodes.open("nodes.txt");
+
+    int nNodes = 0;
+
+    while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
+      test.insert(line);
+      
+      visited << test.depth(movieName) << endl;
+      nodes << nNodes << endl;
+      
+      nNodes++;
+    }
+    visited.close();
+    nodes.close();
+    movieFile.close();
+  }
+
+  
+
+  
   return 0;
 }
 
