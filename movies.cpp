@@ -28,6 +28,7 @@ bool MovieBST::insert(string value) {
 
 	comma = value.rfind(",");
 	mName = value.substr(0,comma);
+	mName.erase(std::remove(mName.begin(), mName.end(), '"'), mName.end());
 	mRating = stod(value.substr(comma+1));
 
     if (!root) {
@@ -43,22 +44,22 @@ bool MovieBST::insert(const string& mName, const double& mRating, Node *n, int m
     if (mName == n->name)
 		return false;
     if (mName < n->name) {
-	if (n->left)
-	    return insert(mName, mRating, n->left, mDepth+1);
-	else {
-	    n->left = new Node(mName, mRating, mDepth);
-	    n->left->parent = n;
-	    return true;
-	}
+		if (n->left)
+	    	return insert(mName, mRating, n->left, mDepth+1);
+		else {
+		    n->left = new Node(mName, mRating, mDepth);
+		    n->left->parent = n;
+		    return true;
+		}
     }
     else {
-	if (n->right)
-	    return insert(mName, mRating, n->right, mDepth + 1);
-	else {
-	    n->right = new Node(mName, mRating, mDepth);
-	    n->right->parent = n;
-	    return true;
-	}
+		if (n->right)
+		    return insert(mName, mRating, n->right, mDepth + 1);
+		else {
+		    n->right = new Node(mName, mRating, mDepth);
+		    n->right->parent = n;
+		    return true;
+		}
     }
 }
 
