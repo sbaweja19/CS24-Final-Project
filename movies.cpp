@@ -1,6 +1,7 @@
 //Sanil Baweja
 
 #include <iostream>
+#include <algorithm>
 #include "movies.h"
 #include "utility.h"
 
