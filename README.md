@@ -12,5 +12,5 @@ This usage was used in order to find the average search times for the BST. This 
 file pa02_sbaweja.pdf. The data charts nodes visited (y axis) to arrive at the node number (x axis). The graphs 
 depict a logarithmic trendline when the runtime analysis is done on the input file with the movies in random 
 order, and a linear line when the input file has the movies in order. The reason for this is ordered movie list 
-places each successive movie in only the left node of the previous node, thus only being ass effective as a 
+places each successive movie in only the right node of the previous node, thus only being ass effective as a 
 linked list rather than a tree. 
